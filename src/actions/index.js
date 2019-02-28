@@ -6,7 +6,6 @@ export function setAuthentification(isLoggedIn) {
       type: SET_AUTHENTIFICATION,
       payload: isLoggedIn
     });
-    dispatch(incrementActionCount());
   };
 }
 
