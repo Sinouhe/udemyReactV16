@@ -4,7 +4,7 @@ const initialState = {
   actionCount: 0
 };
 
-export default function AuthentificationReducer(state = initialState, action) {
+export default function ressourceReducer(state = initialState, action) {
   switch (action.type) {
     case INCREMENT_ACTION_COUNT:
       return {
