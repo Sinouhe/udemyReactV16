@@ -59,10 +59,3 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Ressources);
-
-const test = (state = {}) => state,
-(dispatch, props) => Object.assign({}, props, {
-    deleteItem: actions.deleteItem.bind(null, dispatch)
-})
-
-module.exports = ReactRedux.connect(test)(List);

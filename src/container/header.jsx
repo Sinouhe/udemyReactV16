@@ -39,6 +39,15 @@ class Header extends Component {
               {this.renderAuthentificationLabel()}
             </Link>
           </li>
+          <li className="nav-item">
+            <Link
+              className="nav-link"
+              to="/signin"
+              onClick={this.onClockAuthentification}
+            >
+              {this.renderAuthentificationLabel()}
+            </Link>
+          </li>
         </ul>
       </div>
     );

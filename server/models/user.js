@@ -25,9 +25,17 @@ userSchema.pre('save', function(next) {
             user.password = hash;
             next();
         })
+    });
+});
 
+userSchema.methods.isPasswordEqualTo = function(externalPassword, done) {
+    bcrypt.compare(externalPassword, this.password, function (err, isMatch) {
+        if(err) {
+            return done(err)
+        }
+        done(null,isMatch)
     })
-})
+}
 
 const UserModel = mongoose.model("user", userSchema,'USER_COLL');
 
