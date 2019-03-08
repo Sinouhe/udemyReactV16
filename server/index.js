@@ -5,6 +5,7 @@ const expressServer = express();
 const router = require("./route")
 const http = require('http')
 const mongoose = require('mongoose')
+const cors = require("cors")
 
 mongoose.connect('mongodb://localhost/udemyReactV16',{
     useNewUrlParser:true,
@@ -17,9 +18,11 @@ expressServer.use(morgan('combined'));
 expressServer.use(bodyParser.urlencoded({
     extended: true
   }));
-  expressServer.use(bodyParser.json());
+expressServer.use(bodyParser.json());
+expressServer.use(cors());
 
-const port = 3000
+
+const port = 3030
 const server = http.createServer(expressServer)
 router(expressServer)
 server.listen(port)

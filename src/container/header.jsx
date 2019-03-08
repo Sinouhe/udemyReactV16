@@ -4,9 +4,6 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 class Header extends Component {
-  onClockAuthentification = () => {
-    this.props.setAuthentification(!this.props.isLoggedIn);
-  };
 
   renderAuthentificationLabel = () => {
     if (this.props.isLoggedIn) {
@@ -15,6 +12,25 @@ class Header extends Component {
       return "Connexion";
     }
   };
+
+  renderAuthLink = () => {
+    if(this.props.isLoggedIn) {
+      return (
+        <li className="nav-item">
+          <Link className="nav-link" to={"signout"}>Déconnexion</Link>
+        </li>
+      )
+    } else {
+      return[
+          <li key={1} className="nav-item">
+              <Link className="nav-link" to={"signin"}>Connexion</Link>
+          </li>,
+          <li key={2} className="nav-item">
+            <Link className="nav-link" to={"signup"}>Inscription</Link>
+          </li>
+        ]
+    }
+  }
 
   render() {
     return (
@@ -30,24 +46,7 @@ class Header extends Component {
               Ressources
             </Link>
           </li>
-          <li className="nav-item">
-            <Link
-              className="nav-link"
-              to="#"
-              onClick={this.onClockAuthentification}
-            >
-              {this.renderAuthentificationLabel()}
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              className="nav-link"
-              to="/signin"
-              onClick={this.onClockAuthentification}
-            >
-              {this.renderAuthentificationLabel()}
-            </Link>
-          </li>
+          {this.renderAuthLink()}
         </ul>
       </div>
     );

@@ -9,7 +9,8 @@ import reducers from "./reducers";
 import { BrowserRouter } from "react-router-dom";
 import { actionCounter } from './middlewares/action-counter'
 
-const createStoreWithMiddleware = applyMiddleware(thunk,actionCounter)(createStore);
+//const createStoreWithMiddleware = applyMiddleware(thunk,actionCounter)(createStore);
+const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 ReactDOM.render(
   <Provider
     store={createStoreWithMiddleware(
